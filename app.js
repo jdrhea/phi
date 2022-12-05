@@ -159,13 +159,13 @@ document.addEventListener('DOMContentLoaded', () =>  {
       keyDown()
     }
   }
-  document.addEventListener('keyup', control)
-  document.addEventListener('touchstart', function (event) {
+  document.getElementsByClassName("grid")[0].addEventListener('keyup', control)
+  document.getElementsByClassName("grid")[0].addEventListener('touchstart', function (event) {
     touchstartX = event.changedTouches[0].screenX;
     touchstartY = event.changedTouches[0].screenY;
   }, false);
 
-  document.addEventListener('touchend', function (event) {
+  document.getElementsByClassName("grid")[0].addEventListener('touchend', function (event) {
     touchendX = event.changedTouches[0].screenX;
     touchendY = event.changedTouches[0].screenY;
     handleGesture();
