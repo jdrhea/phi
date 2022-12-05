@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
       keyDown()
     }
   }
-  document.getElementsByClassName("grid")[0].addEventListener('keyup', control)
+  document.addEventListener('keyup', control)
   document.getElementsByClassName("grid")[0].addEventListener('touchstart', function (event) {
     touchstartX = event.changedTouches[0].screenX;
     touchstartY = event.changedTouches[0].screenY;
