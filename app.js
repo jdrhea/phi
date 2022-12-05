@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
   let fibSeq = [1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987]
   const width = 4
   let score = 0
+  let combine = new Audio('click6.mp3');
 
   //create the playing board
   function createBoard() {
@@ -123,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
         squares[i].innerHTML = combinedTotal
         squares[i +1].innerHTML = 0
         score = calcScore()
+        combine.play()
         scoreDisplay.innerHTML = score
       }
     }
@@ -138,6 +140,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
         squares[i].innerHTML = combinedTotal
         squares[i +width].innerHTML = 0
         score = calcScore()
+        combine.play()
         scoreDisplay.innerHTML = score
       }
     }
