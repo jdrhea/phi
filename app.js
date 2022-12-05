@@ -208,7 +208,25 @@ document.addEventListener('DOMContentLoaded', () =>  {
         zeros++
       }
     }
-    if (zeros === 0) {
+    let rowAdds = 0
+    // loop through all the rows to see if there are two numbers to add
+    for (let i =0; i < 15; i++) {
+      let fib1 = parseInt(squares[i].innerHTML)
+      let fib2 = parseInt(squares[i +1].innerHTML)
+      if (canAdd(fib1, fib2) || canAdd(fib2, fib1)) {
+        rowAdds++
+      }
+    }
+    let colAdds = 0
+    // loop through all the columns to see if there are two numbers to add
+    for (let i =0; i < 12; i++) {
+      let fib1 = parseInt(squares[i].innerHTML)
+      let fib2 = parseInt(squares[i +width].innerHTML)
+      if (canAdd(fib1, fib2) || canAdd(fib2, fib1)) {
+        colAdds++
+      }
+    }
+    if (zeros === 0 && rowAdds === 0 && colAdds === 0) {
       resultDisplay.innerHTML = 'Game Over'
       document.removeEventListener('keyup', control)
       setTimeout(() => clear(), 3000)
