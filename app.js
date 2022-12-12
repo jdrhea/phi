@@ -159,17 +159,21 @@ document.addEventListener('DOMContentLoaded', () =>  {
       keyDown()
     }
   }
-  document.addEventListener('keyup', control)
-  document.getElementsByClassName("grid")[0].addEventListener('touchstart', function (event) {
-    touchstartX = event.changedTouches[0].screenX;
-    touchstartY = event.changedTouches[0].screenY;
-  }, false);
 
-  document.getElementsByClassName("grid")[0].addEventListener('touchend', function (event) {
-    touchendX = event.changedTouches[0].screenX;
-    touchendY = event.changedTouches[0].screenY;
+  function touchStartControl(e){
+    touchstartX = e.changedTouches[0].screenX;
+    touchstartY = e.changedTouches[0].screenY;
+  }
+
+  function touchEndControl(e){
+    touchendX = e.changedTouches[0].screenX;
+    touchendY = e.changedTouches[0].screenY;
     handleGesture();
-  }, false);
+  }
+
+  document.addEventListener('keyup', control)
+  document.getElementsByClassName("grid")[0].addEventListener('touchstart', touchStartControl, false);
+  document.getElementsByClassName("grid")[0].addEventListener('touchend', touchEndControl, false);
 
   function handleGesture() {
     let touchsizeX = touchendX - touchstartX
@@ -228,6 +232,8 @@ document.addEventListener('DOMContentLoaded', () =>  {
       if (squares[i].innerHTML == 987) {
         resultDisplay.innerHTML = 'You WIN'
         document.removeEventListener('keyup', control)
+        document.getElementsByClassName("grid")[0].removeEventListener('touchstart',touchStartControl)
+        document.getElementsByClassName("grid")[0].removeEventListener('touchend',touchEndControl)
         setTimeout(() => clear(), 3000)
       }
     }
