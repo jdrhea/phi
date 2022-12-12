@@ -7,7 +7,9 @@ document.addEventListener('DOMContentLoaded', () =>  {
   const width = 4
   let score = 0
   let combine = new Audio('click6.mp3');
-
+  let tada = new Audio('tada windows 3.1.m4a');
+  let error = new Audio('error windows xp.m4a');
+  
 
   //create the playing board
   function createBoard() {
@@ -234,10 +236,12 @@ document.addEventListener('DOMContentLoaded', () =>  {
         resultDisplay.innerHTML = 'You WIN';
         var element = document.getElementById("fireworks");
         element.classList.add("before");
+        tada.play()
         document.removeEventListener('keyup', control)
         document.getElementsByClassName("grid")[0].removeEventListener('touchstart',touchStartControl)
         document.getElementsByClassName("grid")[0].removeEventListener('touchend',touchEndControl)
         setTimeout(() => clear(), 3000)
+
       }
     }
   }
@@ -270,6 +274,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
     }
     if (zeros === 0 && rowAdds === 0 && colAdds === 0) {
       resultDisplay.innerHTML = 'Game Over'
+      error.play()
       document.removeEventListener('keyup', control)
       setTimeout(() => clear(), 3000)
     }
