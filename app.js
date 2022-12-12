@@ -172,20 +172,25 @@ document.addEventListener('DOMContentLoaded', () =>  {
   }, false);
 
   function handleGesture() {
-    if (touchendX < touchstartX) {
-      keyLeft()
-    }
+    let touchsizeX = touchendX - touchstartX
+    let touchsizeY = touchendY - touchstartY
 
-    if (touchendX > touchstartX) {
-      keyRight()
-    }
+    if(Math.abs(touchsizeX) > Math.abs(touchsizeY)){
+      if (touchendX < touchstartX) {
+        keyLeft()
+      }
 
-    if (touchendY < touchstartY) {
-      keyUp()
-    }
+      if (touchendX > touchstartX) {
+        keyRight()
+      }
+    } else {
+      if (touchendY < touchstartY) {
+        keyUp()
+      }
 
-    if (touchendY > touchstartY) {
-      keyDown()
+      if (touchendY > touchstartY) {
+        keyDown()
+      }
     }
   }
 
