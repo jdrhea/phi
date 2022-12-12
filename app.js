@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
   let score = 0
   let combine = new Audio('click6.mp3');
 
+
   //create the playing board
   function createBoard() {
     for (let i=0; i < width*width; i++) {
@@ -230,7 +231,9 @@ document.addEventListener('DOMContentLoaded', () =>  {
   function checkForWin() {
     for (let i=0; i < squares.length; i++) {
       if (squares[i].innerHTML == 987) {
-        resultDisplay.innerHTML = 'You WIN'
+        resultDisplay.innerHTML = 'You WIN';
+        var element = document.getElementById("fireworks");
+        element.classList.add("before");
         document.removeEventListener('keyup', control)
         document.getElementsByClassName("grid")[0].removeEventListener('touchstart',touchStartControl)
         document.getElementsByClassName("grid")[0].removeEventListener('touchend',touchEndControl)
